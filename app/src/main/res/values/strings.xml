@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SampleVolley</string>
+    <string name="cidade">Cidade :</string>
+    <string name="estado">Estado :</string>
+    <string name="Buscar">Buscar</string>
+    <string name="resultado">Resultado</string>
+</resources>
