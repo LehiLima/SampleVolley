@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     @BindView(R.id.busca_cidade) EditText mCidade;
     @BindView(R.id.busca_estado) EditText mEstado;
 
-    private MainActivityPresenter presenter;
+    private MainActivityPresenter mPresenter;
 
 
     @Override
@@ -33,16 +33,16 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         ButterKnife.bind(this);
         ((MyApplication) getApplication()).getComponent().inject(this);
 
-//        // Instancia o presenter
-        presenter = new MainActivityPresenter(this,cityRepository,this);
-        presenter.LoadCities();
+//        // Instancia o mPresenter
+        mPresenter = new MainActivityPresenter(this,cityRepository,this);
+        mPresenter.LoadCities();
 
         btnBuscar.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(android.view.View view) {
-             presenter.setFiltering(mCidade.getText().toString(),
+             mPresenter.setFiltering(mCidade.getText().toString(),
                                                           mEstado.getText().toString(),
-                                                          presenter.getResult());
+                                                          mPresenter.getResult());
             }
         });
 
@@ -57,6 +57,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.LoadCities();
+        mPresenter.LoadCities();
     }
 }
